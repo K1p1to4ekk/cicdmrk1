@@ -15,3 +15,12 @@ def sample_file(tmp_path):
     ("Test", ["Test automation\n"]),
     ("Nonexistent", [])
 ])
+def test_filter_lines(sample_file, keyword, expected_lines, tmp_path):
+    output_file = tmp_path / "filtered_output.txt"
+    filter_lines(sample_file, keyword, output_file)
+    
+    with open(output_file, "r", encoding="utf-8") as f:
+        result_lines = f.readlines()
+    
+    assert result_lines == expected_lines
+
