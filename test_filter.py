@@ -9,3 +9,9 @@ def sample_file(tmp_path):
     file_path.write_text(content, encoding="utf-8")
     return file_path
 
+@pytest.mark.parametrize("keyword, expected_lines", [
+    ("Hello", ["Hello world\n", "Hello pytest\n"]),
+    ("Python", ["Python is great\n"]),
+    ("Test", ["Test automation\n"]),
+    ("Nonexistent", [])
+])
