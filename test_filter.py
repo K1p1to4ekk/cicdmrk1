@@ -24,3 +24,6 @@ def test_filter_lines(sample_file, keyword, expected_lines, tmp_path):
     
     assert result_lines == expected_lines
 
+def test_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        filter_lines("non_existent_file.txt", "Hello")
